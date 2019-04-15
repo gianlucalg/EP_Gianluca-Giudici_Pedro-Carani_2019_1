@@ -1,0 +1,38 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Mar 29 13:42:26 2019
+
+@author: macbookpro
+"""
+
+lista = ['abobora', 'chuchu', 'abobora', 'abobora', 'chuchu']
+
+def conta_palavras(lista):
+    dicionario = {}
+    for e in lista:
+        
+        if e in dicionario:
+            dicionario[e]+=1
+        else:
+            dicionario[e]=1
+        return dicionario
+
+#
+
+def mais_frequente(palavras):
+    contagem = conta_palavras(palavras)
+    maior = 0
+    chave = ''
+    for k, v in contagem.items():
+        if v > maior:
+            maior = v
+            chave = k 
+        return chave
+#
+        
+
+    
+    
+
+    
