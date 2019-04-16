@@ -1,8 +1,9 @@
+
 # EP 2019-1: Escape Insper
 #
 # Alunos: 
-# - aluno A: Fulano da Silva, fulanos@insper.edu.br
-# - aluno B: Sicrano de Almeida, sicranoa1@insper.edu.br
+# - aluno A: Pedro Braga Carani, pedrobc1@al.insper.edu.br
+# - aluno B: Gianluca Lazzaris Giudici, gianlucalg@al.insper.edu.br
 
 def carregar_cenarios():
     cenarios = {
@@ -11,7 +12,9 @@ def carregar_cenarios():
             "descricao": "Voce esta no saguao de entrada do insper",
             "opcoes": {
                 "andar professor": "Tomar o elevador para o andar do professor",
-                "biblioteca": "Ir para a biblioteca"
+                "biblioteca": "Ir para a biblioteca",
+                "esperar dupla": "Esperar a dupla do EP para fugir do insper"
+                
             }
         },
         "andar professor": {
@@ -35,7 +38,21 @@ def carregar_cenarios():
             "opcoes": {
                 "inicio": "Voltar para o saguao de entrada"
             }
-        }
+        },
+        "esperar dupla": {
+            "titulo": "Amigo demais",
+            "descricao": "Voce esta revoltado demais pela demora da sua dupla, e resolver ir embora do insper e desistir do curso",
+            "opcoes": {
+                "ir embora": "Ir embora do insper",
+                "inicio": "Pensou melhor e resolveu voltar para a entrada do Insper"
+                }
+        },
+        "ir embora": {
+            "titulo": "Adeus",
+            "descricao": "Voce foi embora",
+            "opcoes": {}
+            }    
+        
     }
     nome_cenario_atual = "inicio"
     return cenarios, nome_cenario_atual
@@ -59,18 +76,36 @@ def main():
     while not game_over:
         cenario_atual = cenarios[nome_cenario_atual]
 
-        # Aluno A: substitua este comentário pelo código para imprimir 
-        # o cenário atual.
+        print(cenario_atual['titulo'])
+        print('-'*len(cenario_atual['titulo']))
+        print(cenario_atual['descricao'])
+        
 
         opcoes = cenario_atual['opcoes']
         if len(opcoes) == 0:
-            print("Acabaram-se suas opções! Mwo mwo mwooooo...")
-            game_over = True
+            if cenario_atual=="ir embora":
+                print ("Voce foi embora do insper")
+                game_over= True
+            else:     
+                print("Acabaram-se suas opções! Mwo mwo mwooooo...")
+                game_over = True
         else:
-
-            # Aluno B: substitua este comentário e a linha abaixo pelo código
-            # para pedir a escolha do usuário.
-            escolha = ""
+           
+        
+            print ('opcoes:')
+            ks=[]
+            vs=[]
+            for k,v in opcoes.items():
+                ks.append(k)
+                vs.append(v)
+            c=0
+            while c<len(ks):
+                print('{0}:{1}'.format(ks[c],vs[c]))
+                c+=1
+            
+            
+            escolha=input('qual sua escolha? ')
+            
 
             if escolha in opcoes:
                 nome_cenario_atual = escolha
@@ -84,3 +119,4 @@ def main():
 # Programa principal.
 if __name__ == "__main__":
     main()
+
