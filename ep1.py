@@ -2,7 +2,7 @@
 #
 # Alunos: 
 # - aluno A: Pedro Braga Carani, pedrobc1@al.insper.edu.br
-# - aluno B: 
+# - aluno B: Gianluca Lazzaris Giudici, gianlucalg@al.insper.edu.br
 
 def carregar_cenarios():
     cenarios = {
