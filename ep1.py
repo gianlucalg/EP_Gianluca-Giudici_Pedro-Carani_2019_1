@@ -84,7 +84,7 @@ def main():
             
             
             escolha=input('qual sua escolha? ')
-            escolha = ""
+            
 
             if escolha in opcoes:
                 nome_cenario_atual = escolha
