@@ -70,8 +70,20 @@ def main():
             game_over = True
         else:
 
-            # Aluno B: substitua este comentário e a linha abaixo pelo código
-            # para pedir a escolha do usuário.
+        
+            print ('opcoes:')
+            ks=[]
+            vs=[]
+            for k,v in opcoes.items():
+                ks.append(k)
+                vs.append(v)
+            c=0
+            while c<len(ks):
+                print('{0}:{1}'.format(ks[c],vs[c]))
+                c+=1
+            
+            
+            escolha=input('qual sua escolha? ')
             escolha = ""
 
             if escolha in opcoes:
