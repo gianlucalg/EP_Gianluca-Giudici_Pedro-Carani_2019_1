@@ -10,6 +10,7 @@ def carregar_cenarios():
         "inicio": {
             "titulo": "Saguao do perigo",
             "descricao": "Voce esta no saguao de entrada do insper",
+        
             "opcoes": {
                 "andar professor": "Tomar o elevador para o andar do professor",
                 "biblioteca": "Ir para a biblioteca",
@@ -20,9 +21,18 @@ def carregar_cenarios():
         "andar professor": {
             "titulo": "Andar do desespero",
             "descricao": "Voce chegou ao andar da sala do seu professor",
+                        
+         
             "opcoes": {
                 "inicio": "Tomar o elevador para o saguao de entrada",
-                "professor": "Falar com o professor"
+                "sala do professor": "Falar com o professor",
+            }
+        },    
+        'sala do professor': {
+            'titulo': 'Sala trancada',
+            'descricao':'A sala esta trancada',
+            'opcoes': {
+                'inicio':"Tomar o elevador para o saguao de entrada em busca da chave",  
             }
         },
         "professor": {
@@ -30,13 +40,15 @@ def carregar_cenarios():
             "descricao": "Voce foi pedir para o professor adiar o EP. "
                          "O professor revelou que é um monstro disfarçado "
                          "e devorou sua alma.",
+          
             "opcoes": {}
         },
         "biblioteca": {
             "titulo": "Caverna da tranquilidade",
             "descricao": "Voce esta na biblioteca",
             "opcoes": {
-                "inicio": "Voltar para o saguao de entrada"
+                "inicio": "Voltar para o saguao de entrada",
+                "Aquario": "Ir para um aquario"
             }
         },
         "esperar dupla": {
@@ -51,12 +63,26 @@ def carregar_cenarios():
             "titulo": "Adeus",
             "descricao": "Voce foi embora",
             "opcoes": {}
-            }    
-        
+        },    
+        'Aquario': {
+            'titulo':'em busca de algo',
+            'descricao': 'voce esta em um aquario',
+            'opcoes':{}
+            }
+    
+                
     }
     nome_cenario_atual = "inicio"
     return cenarios, nome_cenario_atual
 
+
+
+hit_point=0
+
+
+            
+            
+        
 
 def main():
     print("Na hora do sufoco!")
@@ -80,10 +106,14 @@ def main():
         print('-'*len(cenario_atual['titulo']))
         print(cenario_atual['descricao'])
         
+        if cenario_atual['titulo']== 'biblioteca':
+                    print ('Apareceu um monstro') 
+
+        
 
         opcoes = cenario_atual['opcoes']
         if len(opcoes) == 0:
-            if cenario_atual=="ir embora":
+            if cenario_atual['titulo']=='ir embora':
                 print ("Voce foi embora do insper")
                 game_over= True
             else:     
@@ -112,7 +142,10 @@ def main():
             else:
                 print("Sua indecisão foi sua ruína!")
                 game_over = True
-
+            
+                if cenario_atual['titulo']== 'biblioteca':
+                    print ('Apareceu um monstro')      
+        
     print("Você morreu!")
 
 
