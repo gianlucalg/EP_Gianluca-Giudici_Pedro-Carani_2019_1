@@ -53,7 +53,7 @@ def carregar_cenarios():
         },
         "esperar dupla": {
             "titulo": "Amigo demais",
-            "descricao": "Voce esta revoltado demais pela demora da sua dupla, e resolver ir embora do insper e desistir do curso",
+            "descricao": "Voce esta revoltado demais pela demora da sua dupla, e resolve ir embora do insper e desistir do curso",
             "opcoes": {
                 "ir embora": "Ir embora do insper",
                 "inicio": "Pensou melhor e resolveu voltar para a entrada do Insper"
@@ -76,13 +76,25 @@ def carregar_cenarios():
     return cenarios, nome_cenario_atual
 
 
+def combate():
+    monstros={'Aobsil':{
+                'vida':100,
+                'hit_point':10},
+                    
+              'Luar': {
+                      'vida':1000,
+                      'hit_point':20},
+              'Pi': {10000:0}
+              }
+    vida=100
+    hit_point=0
 
-hit_point=0
+    return monstros, vida, hit_point
+monstros, vida, hit_point = combate()
 
 
-            
-            
-        
+    
+
 
 def main():
     print("Na hora do sufoco!")
@@ -97,7 +109,7 @@ def main():
     print()
 
     cenarios, nome_cenario_atual = carregar_cenarios()
-
+    monstros, vida, hit_point = combate()
     game_over = False
     while not game_over:
         cenario_atual = cenarios[nome_cenario_atual]
@@ -105,23 +117,22 @@ def main():
         print(cenario_atual['titulo'])
         print('-'*len(cenario_atual['titulo']))
         print(cenario_atual['descricao'])
+        if nome_cenario_atual=='biblioteca':
+                    print('Apareceu um monstro chamado Aobsil')
+                    print(monstros['Aobsil'])
+                    luta=input('o que fazer?')
+                    if luta == 'lutar':
+                        
+                        vida-=10
+        print('Vida:{0}'.format(vida))
         
-        if cenario_atual['titulo']== 'biblioteca':
-                    print ('Apareceu um monstro') 
 
-        
 
         opcoes = cenario_atual['opcoes']
-        if len(opcoes) == 0:
-            if cenario_atual['titulo']=='ir embora':
-                print ("Voce foi embora do insper")
-                game_over= True
-            else:     
-                print("Acabaram-se suas opções! Mwo mwo mwooooo...")
-                game_over = True
+        if len(opcoes) == 0:   
+            print("Acabaram-se suas opções! Mwo mwo mwooooo...")
+            game_over = True
         else:
-           
-        
             print ('opcoes:')
             ks=[]
             vs=[]
@@ -139,12 +150,12 @@ def main():
 
             if escolha in opcoes:
                 nome_cenario_atual = escolha
+               
             else:
                 print("Sua indecisão foi sua ruína!")
                 game_over = True
             
-                if cenario_atual['titulo']== 'biblioteca':
-                    print ('Apareceu um monstro')      
+                
         
     print("Você morreu!")
 
