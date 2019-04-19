@@ -67,7 +67,8 @@ def carregar_cenarios():
         'Aquario': {
             'titulo':'em busca de algo',
             'descricao': 'voce esta em um aquario',
-            'opcoes':{}
+            'opcoes':{
+                    "inicio":"sair"}
             }
     
                 
@@ -75,8 +76,8 @@ def carregar_cenarios():
     nome_cenario_atual = "inicio"
     return cenarios, nome_cenario_atual
 
-
-def combate():
+import random
+def monsters():
     monstros={'Aobsil':{
                 'vida':100,
                 'hit_point':10},
@@ -88,10 +89,16 @@ def combate():
               }
     vida=100
     hit_point=0
+    op=['correr',
+        'lutar']
+    return monstros, vida, hit_point, op
 
-    return monstros, vida, hit_point
-monstros, vida, hit_point = combate()
+def rewards():
+    premios=['Diploma', 'Carta da aprovacao', 'Passe livre']
+    r=random.randint(0, 3)
+    return premios[r]
 
+   
 
     
 
@@ -109,29 +116,67 @@ def main():
     print()
 
     cenarios, nome_cenario_atual = carregar_cenarios()
-    monstros, vida, hit_point = combate()
+    monstros, vida, hit_point, op = monsters()
     game_over = False
     while not game_over:
         cenario_atual = cenarios[nome_cenario_atual]
-
+        #Geral
         print(cenario_atual['titulo'])
         print('-'*len(cenario_atual['titulo']))
         print(cenario_atual['descricao'])
-        if nome_cenario_atual=='biblioteca':
-                    print('Apareceu um monstro chamado Aobsil')
-                    print(monstros['Aobsil'])
-                    luta=input('o que fazer?')
-                    if luta == 'lutar':
-                        
-                        vida-=10
-        print('Vida:{0}'.format(vida))
         
+        
+        
+        km=[]
+        kv=[]
+
+        for k, v in monstros.items():
+            km.append(k) 
+            kv.append(v)
+    
+        
+        
+        x=random.randint(0, 4)
+       
+
+            
+
+ 
+      
+        
+        
+        print('Sua Vida:{0}'.format(vida))
+        i=random.randint(1, 10)
+  
 
 
         opcoes = cenario_atual['opcoes']
         if len(opcoes) == 0:   
             print("Acabaram-se suas opções! Mwo mwo mwooooo...")
             game_over = True
+        elif i==3:
+              
+              print (rewards())    
+              print ('Voce foi bem sucedido na sua missao')
+              game_over= True
+
+        elif x==0: 
+            print ('Apareceu um monstro chamado {}, voce pode correr dele ou enfrenta-lo!'.format(km[x]))
+            print('opcoes:')
+            w=0
+            while w<len(op):
+                
+                print (op[w])
+                w+=1
+            x1=input('O que voce vai fazer?:')
+            if x1 in op[1]:
+                
+                vida-=10
+                
+            else:    
+                print ('Voce nao foi rapido suficiente...')
+                game_over= True
+                
         else:
             print ('opcoes:')
             ks=[]
@@ -156,8 +201,10 @@ def main():
                 game_over = True
             
                 
-        
-    print("Você morreu!")
+    if i==3:
+        print ('PARABENS')
+    else:    
+        print("Você morreu!")
 
 
 # Programa principal.
