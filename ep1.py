@@ -48,7 +48,7 @@ def carregar_cenarios():
             "descricao": "Voce esta na biblioteca",
             "opcoes": {
                 "inicio": "Voltar para o saguao de entrada",
-                "Aquario": "Ir para um aquario"
+                "aquario": "Ir para um aquario"
             }
         },
         "esperar dupla": {
@@ -64,7 +64,7 @@ def carregar_cenarios():
             "descricao": "Voce foi embora",
             "opcoes": {}
         },    
-        'Aquario': {
+        'aquario': {
             'titulo':'em busca de algo',
             'descricao': 'voce esta em um aquario',
             'opcoes':{
@@ -87,7 +87,7 @@ def monsters():
                       'hit_point':20},
               'Pi': {10000:0}
               }
-    vida=100
+    vida=10
     hit_point=0
     op=['correr',
         'lutar']
@@ -136,7 +136,7 @@ def main():
     
         
         
-        x=random.randint(0, 4)
+        x=random.randint(0, 10)
        
 
             
@@ -146,7 +146,10 @@ def main():
         
         
         print('Sua Vida:{0}'.format(vida))
-        i=random.randint(1, 10)
+        if vida == 0:
+            game_over=True
+    
+        i=random.randint(1, 100)
   
 
 
@@ -173,6 +176,36 @@ def main():
                 
                 vida-=10
                 
+            else:    
+                print ('Voce nao foi rapido suficiente...')
+                game_over= True
+        elif x==1:
+            print ('Apareceu um monstro chamado {}, voce pode correr dele ou enfrenta-lo!'.format(km[x]))
+            print('opcoes:')
+            w=0
+            while w<len(op):
+                
+                print (op[w])
+                w+=1
+            x1=input('O que voce vai fazer?:')
+            if x1 in op[1]:
+                
+                vida-=10
+            else:    
+                print ('Voce nao foi rapido suficiente...')
+                game_over= True    
+        elif x==2:
+            print ('Apareceu um monstro chamado {}, voce pode correr dele ou enfrenta-lo!'.format(km[x]))
+            print('opcoes:')
+            w=0
+            while w<len(op):
+                
+                print (op[w])
+                w+=1
+            x1=input('O que voce vai fazer?:')
+            if x1 in op[1]:
+                
+                vida-=10
             else:    
                 print ('Voce nao foi rapido suficiente...')
                 game_over= True
