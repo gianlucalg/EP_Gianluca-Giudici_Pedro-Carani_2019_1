@@ -61,18 +61,18 @@ def carregar_cenarios():
         },
         "ir embora": {
             "titulo": "Adeus",
-            "descricao": "Voce foi embora",
-            "opcoes": {}
-        },    
+            "descricao": "No caminho, voce encontrou sua dupla e resolve conversar com ela",
+            "opcoes":{}
+                    
+                    
+        },
         'aquario': {
             'titulo':'em busca de algo',
             'descricao': 'voce esta em um aquario',
             'opcoes':{
                     "inicio":"sair"}
             }
-    
-                
-    }
+           }
     nome_cenario_atual = "inicio"
     return cenarios, nome_cenario_atual
 
@@ -87,19 +87,19 @@ def monsters():
                       'hit_point':20},
               'Pi': {10000:0}
               }
-    vida=10
-    hit_point=0
-    op=['correr',
-        'lutar']
+    vida=50
+    hit_point=20
+    op=['correr', 'lutar', 'item']
     return monstros, vida, hit_point, op
 
+#premio
 def rewards():
     premios=['Diploma', 'Carta da aprovacao', 'Passe livre']
     r=random.randint(0, 3)
     return premios[r]
 
    
-
+chave=0
     
 
 
@@ -125,8 +125,9 @@ def main():
         print('-'*len(cenario_atual['titulo']))
         print(cenario_atual['descricao'])
         
+        print()
         
-        
+        #combate
         km=[]
         kv=[]
 
@@ -139,15 +140,13 @@ def main():
         x=random.randint(0, 10)
        
 
-            
-
  
       
         
         
         print('Sua Vida:{0}'.format(vida))
-        if vida == 0:
-            game_over=True
+        print()
+        
     
         i=random.randint(1, 100)
   
@@ -162,7 +161,8 @@ def main():
               print (rewards())    
               print ('Voce foi bem sucedido na sua missao')
               game_over= True
-
+        elif vida ==0:
+            game_over = True
         elif x==0: 
             print ('Apareceu um monstro chamado {}, voce pode correr dele ou enfrenta-lo!'.format(km[x]))
             print('opcoes:')
@@ -171,14 +171,25 @@ def main():
                 
                 print (op[w])
                 w+=1
-            x1=input('O que voce vai fazer?:')
-            if x1 in op[1]:
+            vida_monstro1=300
+            while vida_monstro1 != 0:  
+                x1=input('O que voce vai fazer?:')
+            
+                if x1 in op[1]:
+                    y1=vida_monstro1
+                    vida-=10
+                    vida_monstro1-=100
+                    
+                    print ("a vida do monstro é {}".format(y1))
+                    print ('Sua vida é {}'.format(vida))
                 
-                vida-=10
-                
-            else:    
-                print ('Voce nao foi rapido suficiente...')
-                game_over= True
+                else:    
+                    print ('Voce nao foi rapido suficiente...')
+                    vida_monstro1=0
+                    game_over= True
+                    
+                    
+            print ('Voce derrotou o monstro')    
         elif x==1:
             print ('Apareceu um monstro chamado {}, voce pode correr dele ou enfrenta-lo!'.format(km[x]))
             print('opcoes:')
@@ -187,31 +198,54 @@ def main():
                 
                 print (op[w])
                 w+=1
-            x1=input('O que voce vai fazer?:')
-            if x1 in op[1]:
-                
-                vida-=10
-            else:    
-                print ('Voce nao foi rapido suficiente...')
-                game_over= True    
+            vida_monstro2=600
+           
+            while vida_monstro2 != 0:
+                x1=input('O que voce vai fazer?:')
+                if x1 in op[1]:
+                    y2=vida_monstro2
+                    vida_monstro2-=hit_point
+                    vida-=10
+                    print ("a vida do monstro é {}".format(y2))
+                    print ('Sua vida é {}'.format(vida))
+                    print ('O seu ataque é {}'.format(hit_point))
+                else:    
+                    print ('Voce nao foi rapido suficiente...')
+                    game_over= True
+                    vida_monstro2=0
+            print ('Voce derrotou o monstro, segue o jogo')   
         elif x==2:
+            
             print ('Apareceu um monstro chamado {}, voce pode correr dele ou enfrenta-lo!'.format(km[x]))
-            print('opcoes:')
+            print()
+            print('Opcoes:')
             w=0
             while w<len(op):
                 
                 print (op[w])
                 w+=1
-            x1=input('O que voce vai fazer?:')
-            if x1 in op[1]:
+            vida_monstro3=200
+            while vida_monstro3 != 0: 
                 
-                vida-=10
-            else:    
-                print ('Voce nao foi rapido suficiente...')
-                game_over= True
-                
+                x1=input('O que voce vai fazer?:')
+                if x1 in op[1]:
+                    y3=vida_monstro3
+                    vida_monstro3-=100
+                    vida-=5
+                    print ("a vida do monstro é {}".format(y3))
+                    print ('Sua vida é {}'.format(vida))
+                elif x1 in op[2]:
+                    vida+=100
+                else:    
+                    print ('Voce nao foi rapido suficiente...')
+                    game_over= True
+                    vida_monstro3=0
+                    
+            print ('Voce derrotou o monstro e ganhou acesso a sala do professor') 
+            
+
         else:
-            print ('opcoes:')
+            print ('Opcoes:')
             ks=[]
             vs=[]
             for k,v in opcoes.items():
@@ -224,10 +258,15 @@ def main():
             
             
             escolha=input('qual sua escolha? ')
-            
+            pocao=random.randint(0,5)
+            if pocao ==2:
+                print ('Voce achou a pocao magica, sua vida foi recuperada')
+                vida=100
 
             if escolha in opcoes:
                 nome_cenario_atual = escolha
+            elif chave==1:
+                nome_cenario_atual='sala do professor'   
                
             else:
                 print("Sua indecisão foi sua ruína!")
@@ -236,8 +275,10 @@ def main():
                 
     if i==3:
         print ('PARABENS')
+    elif vida==0:
+        print('Voce morreu!')
     else:    
-        print("Você morreu!")
+        print("FIM!")
 
 
 # Programa principal.
