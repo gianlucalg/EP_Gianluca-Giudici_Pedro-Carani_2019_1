@@ -63,13 +63,9 @@ def carregar_cenarios():
         "ir embora": {
             "titulo": "Adeus",
             "descricao": "No caminho, voce encontrou sua dupla e resolve conversar com ela",
-<<<<<<< HEAD
             "opcoes":{
                  'inicio': 'voltar para o insper com sua dupla'}
             
-=======
-            "opcoes":{}
->>>>>>> 731c477147c627793f755ff19d96e5e4a52e7b77
                     
                     
         },
@@ -78,7 +74,6 @@ def carregar_cenarios():
             'descricao': 'voce esta em um aquario',
             'opcoes':{
                     "inicio":"sair"}
-<<<<<<< HEAD
             },
         'predio 2': { 
             'titulo': 'Predio 2',
@@ -86,7 +81,7 @@ def carregar_cenarios():
             'opcoes':{
                     'sala 114': 'ir ate a sala de aula',
                     'inicio': 'voltar para o predio1',
-                    'Fab Lab': 'ir para o FabLab' 
+                    'Fab Lab':'ir para o FabLab'
                     }
             },
          'sala 114': {
@@ -99,18 +94,17 @@ def carregar_cenarios():
         'portal':{
             'titulo':'voce encontrou o professor',
             'descricao':'deu tudo certo com o adiamento, missao cumprida.',
-            'opcoes':{
-                }
+            'opcoes':{}
             },
-        'Fab Lab':{
-            'titulo':'voce esta no FabLab',
-            'descricao':'voce nao encontrou o professor, tome cuidado com os monstros na volta!!!!',
-            'opcoes':{
-                    'predio 2': 'voltar para o inicio'}
-       
-           }
->>>>>>> 731c477147c627793f755ff19d96e5e4a52e7b77
-           }
+        'Fab Lab' : {
+           'titulo':'Fab Lab',
+           'descricao':'voce esta no Fab Lab, o professor nao esta aqui, cuidado com os monstros ao retornar!!!!',
+           'opcoes':{
+                   'predio 2':'voltar para o predio 2'
+                   }
+           }}
+          
+           
     nome_cenario_atual = "inicio"
     return cenarios, nome_cenario_atual
 import time
@@ -134,32 +128,6 @@ def monsters():
     return monstros, vida, hit_point, op
 
 #FEATURE PREMIOS
-def rewards():
-    premios=['Diploma', 'Carta da aprovacao', 'Passe livre']
-    r=random.randint(0, 3)
-    return premios[r]
-
-   
-chave=0
-    
-
-import random
-def monsters():
-    monstros={'Aobsil':{
-                'vida':100,
-                'hit_point':10},
-                    
-              'Luar': {
-                      'vida':1000,
-                      'hit_point':20},
-              'Pi': {10000:0}
-              }
-    vida=50
-    hit_point=20
-    op=['correr', 'lutar', 'item']
-    return monstros, vida, hit_point, op
-
-#premio
 def rewards():
     premios=['Diploma', 'Carta da aprovacao', 'Passe livre']
     r=random.randint(0, 3)
@@ -199,12 +167,9 @@ def main():
         
         cenario_atual = cenarios[nome_cenario_atual]
         #Geral
-<<<<<<< HEAD
         time.sleep(0.2)
         print ()
         print ()
-=======
->>>>>>> 731c477147c627793f755ff19d96e5e4a52e7b77
         print(cenario_atual['titulo'])
         time.sleep(0.2)
         print('-'*len(cenario_atual['titulo']))
@@ -214,11 +179,7 @@ def main():
         
         print()
         
-<<<<<<< HEAD
         #FEATURE combate
-=======
-        #combate
->>>>>>> 731c477147c627793f755ff19d96e5e4a52e7b77
         km=[]
         kv=[]
 
@@ -228,11 +189,7 @@ def main():
     
         
         
-<<<<<<< HEAD
         x=random.randint(1, 6)
-=======
-        x=random.randint(0, 10)
->>>>>>> 731c477147c627793f755ff19d96e5e4a52e7b77
        
 
  
@@ -243,16 +200,11 @@ def main():
         print()
         
     
-<<<<<<< HEAD
         i=random.randint(1, 50)
-=======
-        i=random.randint(1, 100)
->>>>>>> 731c477147c627793f755ff19d96e5e4a52e7b77
   
 
 
         opcoes = cenario_atual['opcoes']
-<<<<<<< HEAD
         
         if len(opcoes) == 0:   
             print("Acabaram-se suas opções! Mwo mwo mwooooo...")
@@ -260,17 +212,11 @@ def main():
        
         
         #Rewards
-=======
-        if len(opcoes) == 0:   
-            print("Acabaram-se suas opções! Mwo mwo mwooooo...")
-            game_over = True
->>>>>>> 731c477147c627793f755ff19d96e5e4a52e7b77
         elif i==3:
               
               print (rewards())    
               print ('Voce foi bem sucedido na sua missao')
               game_over= True
-<<<<<<< HEAD
         
         
         #vida
@@ -281,10 +227,6 @@ def main():
         
         #SPAWN MONSTRO 1
         
-=======
-        elif vida ==0:
-            game_over = True
->>>>>>> 731c477147c627793f755ff19d96e5e4a52e7b77
         elif x==0: 
             print ('Apareceu um monstro chamado {}, voce pode correr dele ou enfrenta-lo!'.format(km[x]))
             print('opcoes:')
@@ -293,23 +235,17 @@ def main():
                 
                 print (op[w])
                 w+=1
-<<<<<<< HEAD
             vida_monstro1=40
             
             
             
             
             while vida_monstro1 != 0 and game_over==False:  
-=======
-            vida_monstro1=300
-            while vida_monstro1 != 0:  
->>>>>>> 731c477147c627793f755ff19d96e5e4a52e7b77
                 x1=input('O que voce vai fazer?:')
             
                 if x1 in op[1]:
                     y1=vida_monstro1
                     vida-=10
-<<<<<<< HEAD
                     vida_monstro1-=20
                     
                     print ("a vida do monstro é {}".format(y1))
@@ -325,17 +261,10 @@ def main():
                     else:
                         print ('voce nao tem item')
                 
-=======
-                    vida_monstro1-=100
-                    
-                    print ("a vida do monstro é {}".format(y1))
-                    print ('Sua vida é {}'.format(vida))
->>>>>>> 731c477147c627793f755ff19d96e5e4a52e7b77
                 
                 else:    
                     print ('Voce nao foi rapido suficiente...')
                     vida_monstro1=0
-<<<<<<< HEAD
                     
                     
                     
@@ -348,12 +277,6 @@ def main():
         
         
         
-=======
-                    game_over= True
-                    
-                    
-            print ('Voce derrotou o monstro')    
->>>>>>> 731c477147c627793f755ff19d96e5e4a52e7b77
         elif x==1:
             print ('Apareceu um monstro chamado {}, voce pode correr dele ou enfrenta-lo!'.format(km[x]))
             print('opcoes:')
@@ -362,15 +285,9 @@ def main():
                 
                 print (op[w])
                 w+=1
-<<<<<<< HEAD
             vida_monstro2=40
            
             while vida_monstro2 != 0 and game_over==False:
-=======
-            vida_monstro2=600
-           
-            while vida_monstro2 != 0:
->>>>>>> 731c477147c627793f755ff19d96e5e4a52e7b77
                 x1=input('O que voce vai fazer?:')
                 if x1 in op[1]:
                     y2=vida_monstro2
@@ -379,7 +296,6 @@ def main():
                     print ("a vida do monstro é {}".format(y2))
                     print ('Sua vida é {}'.format(vida))
                     print ('O seu ataque é {}'.format(hit_point))
-<<<<<<< HEAD
                 elif x1 in op[2]:
                     r=random.randint(0,4)
                     if r==2:
@@ -398,13 +314,6 @@ def main():
         
         #Spawm monstro 3
         
-=======
-                else:    
-                    print ('Voce nao foi rapido suficiente...')
-                    game_over= True
-                    vida_monstro2=0
-            print ('Voce derrotou o monstro, segue o jogo')   
->>>>>>> 731c477147c627793f755ff19d96e5e4a52e7b77
         elif x==2:
             
             print ('Apareceu um monstro chamado {}, voce pode correr dele ou enfrenta-lo!'.format(km[x]))
@@ -415,18 +324,12 @@ def main():
                 
                 print (op[w])
                 w+=1
-<<<<<<< HEAD
             vida_monstro3=60
             while vida_monstro3 != 0 and game_over==False: 
-=======
-            vida_monstro3=200
-            while vida_monstro3 != 0: 
->>>>>>> 731c477147c627793f755ff19d96e5e4a52e7b77
                 
                 x1=input('O que voce vai fazer?:')
                 if x1 in op[1]:
                     y3=vida_monstro3
-<<<<<<< HEAD
                     vida_monstro3-=hit_point
                     vida-=5
                     print ("a vida do monstro é {}".format(y3))
@@ -448,21 +351,6 @@ def main():
                 print ('Voce derrotou o monstro') 
             else: 
                 print ('adeus')
-=======
-                    vida_monstro3-=100
-                    vida-=5
-                    print ("a vida do monstro é {}".format(y3))
-                    print ('Sua vida é {}'.format(vida))
-                elif x1 in op[2]:
-                    vida+=100
-                else:    
-                    print ('Voce nao foi rapido suficiente...')
-                    game_over= True
-                    vida_monstro3=0
-                    
-            print ('Voce derrotou o monstro e ganhou acesso a sala do professor') 
-            
->>>>>>> 731c477147c627793f755ff19d96e5e4a52e7b77
 
         else:
             print ('Opcoes:')
@@ -478,34 +366,21 @@ def main():
             
             
             escolha=input('qual sua escolha? ')
-<<<<<<< HEAD
             if escolha=='portal':
                 game_win=True
-=======
->>>>>>> 731c477147c627793f755ff19d96e5e4a52e7b77
             pocao=random.randint(0,5)
             if pocao ==2:
                 print ('Voce achou a pocao magica, sua vida foi recuperada')
                 vida=100
-<<<<<<< HEAD
                 
             if escolha in opcoes:
                 nome_cenario_atual = escolha
       
-=======
-
-            if escolha in opcoes:
-                nome_cenario_atual = escolha
-            elif chave==1:
-                nome_cenario_atual='sala do professor'   
-               
->>>>>>> 731c477147c627793f755ff19d96e5e4a52e7b77
             else:
                 print("Sua indecisão foi sua ruína!")
                 game_over = True
             
                 
-<<<<<<< HEAD
     if i==3 or game_win==True:
         print ('PARABENS {}'.format(nome))
     elif vida==0:
@@ -514,14 +389,6 @@ def main():
     
       
     print("FIM!")
-=======
-    if i==3:
-        print ('PARABENS')
-    elif vida==0:
-        print('Voce morreu!')
-    else:    
-        print("FIM!")
->>>>>>> 731c477147c627793f755ff19d96e5e4a52e7b77
 
 
 # Programa principal.
