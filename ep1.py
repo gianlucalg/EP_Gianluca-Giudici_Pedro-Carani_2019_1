@@ -15,7 +15,8 @@ def carregar_cenarios():
                 "andar professor": "Tomar o elevador para o andar do professor",
                 "biblioteca": "Ir para a biblioteca",
                 "esperar dupla": "Esperar a dupla do EP para fugir do insper",
-                "predio 2": "Ir ate o Predio 2"
+                "predio 2": "Ir ate o Predio 2",
+                "Tech Lab": "Ir para o -1"
                 
             }
         },
@@ -102,7 +103,28 @@ def carregar_cenarios():
            'opcoes':{
                    'predio 2':'voltar para o predio 2'
                    }
-           }}
+           },
+        'Tech Lab' : { 
+            'titulo': 'Tech Lab',
+            'descricao':'voce esta no subsolo do predio 1 em busca do professor',
+            'opcoes':{
+                    'entrar':'entrar no Tech Lab',
+                    'Baja':'ir para o Baja'}
+          },
+        'entrar' : {
+            'titulo': 'Dentro da oficina',
+            'descricao':'voce esta dentro do Tech lab, nao tem ninguem no local, só os monstros',
+            'opcoes':{
+                    'inicio':'ir embora correndo'}
+          },
+        'Baja':{
+            'titulo': 'Baja',
+            'descricao':'voce encontrou um tunel de acesso, parece que ele sai na biblioteca...',
+            'opcoes':{
+                    'bilioteca':'entrar no tunel'}
+        }       
+             
+    }
           
            
     nome_cenario_atual = "inicio"
