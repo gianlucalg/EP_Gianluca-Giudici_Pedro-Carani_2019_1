@@ -121,7 +121,7 @@ def carregar_cenarios():
             'titulo': 'Baja',
             'descricao':'voce encontrou um tunel de acesso, parece que ele sai na biblioteca...',
             'opcoes':{
-                    'bilioteca':'entrar no tunel'}
+                    'biblioteca':'entrar no tunel'}
         }       
              
     }
