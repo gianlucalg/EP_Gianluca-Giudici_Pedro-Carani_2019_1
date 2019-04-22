@@ -85,7 +85,8 @@ def carregar_cenarios():
             'descricao': 'voce esta a procura do professor',
             'opcoes':{
                     'sala 114': 'ir ate a sala de aula',
-                    'inicio': 'voltar para o predio1'
+                    'inicio': 'voltar para o predio1',
+                    'Fab Lab': 'ir para o FabLab' 
                     }
             },
          'sala 114': {
@@ -99,10 +100,15 @@ def carregar_cenarios():
             'titulo':'voce encontrou o professor',
             'descricao':'deu tudo certo com o adiamento, missao cumprida.',
             'opcoes':{
-                }}
-          
-=======
-            }
+                }
+            },
+        'Fab Lab':{
+            'titulo':'voce esta no FabLab',
+            'descricao':'voce nao encontrou o professor, tome cuidado com os monstros na volta!!!!',
+            'opcoes':{
+                    'predio 2': 'voltar para o inicio'}
+       
+           }
 >>>>>>> 731c477147c627793f755ff19d96e5e4a52e7b77
            }
     nome_cenario_atual = "inicio"
